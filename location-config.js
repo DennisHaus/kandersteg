@@ -11,6 +11,9 @@ window.LOCATION_CONFIG = {
     KANDERSTEG
   `,
 
+  coordinates:
+    "46.494109, 7.700153",
+
   catalogUrl: "./catalog.json",
 
 liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/?site=kandersteg",
