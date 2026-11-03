@@ -68,13 +68,13 @@ liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/?site=kandersteg",
   useRawBaseForPaths: true,
 
   rawBaseUrl:
-    "https://pub-25335b20ee0e4403bd979191bab86ab9.r2.dev",
+    "https://pub-9ea0573a27e24fd58b5e20cc3c5b621a.r2.dev",
 
   downloadPassword: "Voser",
 
   /* Needed now, because uploadUrl no longer points to GitHub */
   locationsSaveUrl:
-    "https://github.com/DennisHaus/biel-bienne/new/main/locations",
+    "https://github.com/DennisHaus/kandersteg/new/main/locations",
 
   /*
     Shift added to the coordinates shown when measuring.
