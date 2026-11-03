@@ -1,0 +1,488 @@
+window.LOCATION_CONFIG = {
+  pageTitle: "Kandersteg",
+
+  metaDescription:
+    "Cloud optimized point cloud and spatial data viewer.",
+
+  brandEyebrow:
+    "© ETH ZURICH",
+
+  brandTitle: `
+    KANDERSTEG
+  `,
+
+  catalogUrl: "./catalog.json",
+
+liveCatalogUrl: "https://brinzauls.wi-251124.workers.dev/?site=kandersteg",
+
+  brandSubtitle: `
+  Master Thesis | for collecting, storing and
+  visualizing spatial recordings and spatial visions of Kandersteg
+  during the Fall Semester 2025  |
+    beta version
+    <br><br>
+    See all Places <a
+      class="subtitle-link"
+      href="x"
+      target="_blank"
+      rel="noopener"
+    >
+      here
+    </a> |
+    Viewer inspired by
+    <a
+      class="subtitle-link"
+      href="https://kyotodesignlab.github.io/campus-garden"
+      target="_blank"
+      rel="noopener"
+    >
+      Campus Garden XR
+    </a>
+    , Kyoto Design Lab
+  `,
+
+
+  navigationMode: "orbit",
+
+  /*
+    Which side panels are open when the page opens.
+  */
+  panelsOpenOnStart: {
+    library: true,
+    inspector: false
+  },
+
+  uploadUrl:
+    "https://dash.cloudflare.com/cda5eaaba44345e253835586b1cc1b29/r2/default/buckets/kandersteg",
+
+  readmeTitle: "Spatial Library - Read Me",
+
+  catalogUrl: "./catalog.json",
+
+  scanPathPrefix: "scans/",
+
+  /*
+    Keep this false when catalog.json contains relative paths,
+    for example: scans/scan-01.copc.laz
+  */
+  useRawBaseForPaths: true,
+
+  rawBaseUrl:
+    "https://pub-25335b20ee0e4403bd979191bab86ab9.r2.dev",
+
+  downloadPassword: "Voser",
+
+  /* Needed now, because uploadUrl no longer points to GitHub */
+  locationsSaveUrl:
+    "https://github.com/DennisHaus/biel-bienne/new/main/locations",
+
+  /*
+    Shift added to the coordinates shown when measuring.
+    Use it when a scan was moved during export, so X, Y and Z show the
+    real values again. Distances and differences are not affected.
+
+    Only a vertical shift (meters):   coordinateShift: 205,
+    All three axes:                   coordinateShift: [2600000, 1200000, 205],
+    No shift:                         coordinateShift: 0,
+  */
+  coordinateShift: 0,
+
+  /*
+    Usage counters in the Read Me (downloads, renders, documents, visits).
+    The counts are stored on a free counter service so that every visitor
+    sees the same totals. Use a unique namespace per location.
+  */
+  usageStats: {
+    enabled: true,
+    apiBase: "https://abacus.jasoncameron.dev",
+    namespace: "biel-bienne"
+  },
+
+  readmeHtml: `
+    <section>
+      <h3>Overview</h3>
+
+      <p>
+        Spatial Library Biel-Bienne is a point-cloud viewer for loading,
+        visualizing, inspecting and comparing COPC LAZ scans, together with
+        images, videos and audio recordings of the place.
+      </p>
+
+      <p>
+        Select a scan from the model library to load it into the viewer.
+        Several scans can be loaded and displayed at the same time.
+        Registered users can upload and download models.
+        Sections can be visualized and images exported.
+      </p>
+    </section>
+
+    <section>
+      <h3>Compatible file formats</h3>
+
+      <ul>
+        <li>
+          <strong>Point cloud:</strong>
+          .copc.laz
+        </li>
+
+        <li>
+          <strong>Video:</strong>
+          .mp4 | .mov
+        </li>
+
+        <li>
+          <strong>Images:</strong>
+          .png | .jpg
+        </li>
+
+        <li>
+          <strong>Audio:</strong>
+          .mp3 | .wav
+        </li>
+
+        <li>
+          <strong>Text:</strong>
+          .txt | .md (Markdown: headings, bold, lists and links
+          are formatted)
+        </li>
+      </ul>
+
+      <p>
+        Images, videos, audio and text files open in a small window that
+        can be moved by dragging its title bar. Image, video and text
+        windows can be resized at their corners.
+      </p>
+    </section>
+
+    <section>
+      <h3>Navigation</h3>
+
+      <ul>
+        <li>
+          <strong>Left mouse button + drag:</strong>
+          Rotate the view.
+        </li>
+
+        <li>
+          <strong>Right mouse button + drag:</strong>
+          Pan the view.
+        </li>
+
+        <li>
+          <strong>Mouse wheel:</strong>
+          Zoom in and out.
+        </li>
+
+        <li>
+          <strong>W / S or Arrow Up / Down:</strong>
+          Move forward and backward.
+        </li>
+
+        <li>
+          <strong>A / D or Arrow Left / Right:</strong>
+          Move left and right.
+        </li>
+
+        <li>
+          <strong>E / C:</strong>
+          Move up and down.
+        </li>
+
+        <li>
+          <strong>. and , :</strong>
+          Increase or decrease the movement speed.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Viewer toolbar</h3>
+
+      <p>
+        The toolbar at the bottom of the viewer contains, from left to right:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Focus on all visible scans:</strong>
+          Zooms out so that every visible scan fits into the view.
+        </li>
+
+        <li>
+          <strong>Focus on selected scan:</strong>
+          Zooms to the scan that is currently selected in the library.
+        </li>
+
+        <li>
+          <strong>Orbit / Fly (key O):</strong>
+          Orbit rotates the view around a center point.
+          Fly rotates the view around the camera itself, like turning
+          your head.
+        </li>
+
+        <li>
+          <strong>Perspective / Orthographic:</strong>
+          Perspective shows the scan with depth, as the eye sees it.
+          Orthographic removes the perspective distortion, so parallel
+          lines stay parallel, as in a plan or elevation drawing.
+        </li>
+
+        <li>
+          <strong>Download:</strong>
+          Downloads the selected scan as a .copc.laz file.
+          A password is required.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Measuring</h3>
+
+      <ul>
+        <li>
+          <strong>⌘-click (Mac) or Ctrl-click (Windows):</strong>
+          Click on a point of a scan to see its X, Y and Z coordinates.
+        </li>
+
+        <li>
+          <strong>Second ⌘/Ctrl-click:</strong>
+          Shows the second point and the difference between both points:
+          ΔX, ΔY, ΔZ, the horizontal distance, the 3D distance and the
+          slope in degrees and percent.
+        </li>
+
+        <li>
+          <strong>Third ⌘/Ctrl-click:</strong>
+          Starts a new measurement.
+        </li>
+
+        <li>
+          <strong>Copy / × / Esc:</strong>
+          Copy puts all values on the clipboard, for example to paste
+          into a spreadsheet. × or the Esc key removes the measurement.
+        </li>
+      </ul>
+
+      <p>
+        Values are shown in the units of the scan, usually meters.
+        Only visible points can be measured. When a section is active,
+        only points inside the slice can be picked.
+      </p>
+    </section>
+
+    <section>
+      <h3>Media locations</h3>
+
+      <p>
+        Images, videos, audio and text files can be linked to a place in
+        the point cloud. They appear there as small icons. Click an icon to
+        open the file.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Set a location:</strong>
+          Open a media file from the library, then Shift + ⌘-click
+          (Mac) or Shift + Ctrl-click (Windows) on a point of a scan.
+          The location applies to the media window in front.
+          Doing it again moves the icon to the new place, also for
+          locations that were already saved.
+        </li>
+
+        <li>
+          <strong>Remove a location:</strong>
+          Shift + ⌘/Ctrl-click on the icon.
+        </li>
+
+        <li>
+          <strong>Hide Icons / Show Icons (or the P key):</strong>
+          Hides or shows all media icons. The choice is remembered.
+        </li>
+
+        <li>
+          <strong>Saving:</strong>
+          New and changed locations are first kept in your browser only.
+          A bar at the bottom right of the viewer shows how many changes
+          there are. "Save for everyone" opens GitHub with the locations
+          already filled in; click "Commit changes" there. After a short
+          moment, the catalog is updated and every visitor sees the
+          icons. "Discard" undoes your changes.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Model library</h3>
+
+      <ul>
+        <li>Click a scan name to select it.</li>
+        <li>Click the visibility symbol to show or hide a scan.</li>
+        <li>Use the refresh button to reload the scan catalog.</li>
+        <li>Use the arrow button to open or close the library.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Inspector</h3>
+
+      <p>
+        Open the inspector with the bar at the bottom right. All settings
+        apply to the scan that is currently selected in the library.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Scan information:</strong>
+          Shows the file format, the number of loaded points and the
+          file size of the selected scan.
+        </li>
+
+        <li>
+          <strong>Point display:</strong>
+          <em>Depth-sized</em> draws points larger when they are close to
+          the camera and smaller when they are far away, so surfaces look
+          closed. <em>Single pixels</em> draws every point as one pixel,
+          which shows the raw density of the scan.
+        </li>
+
+        <li>
+          <strong>Color mode:</strong>
+          <em>RGB</em> shows the colors recorded during the scan.
+          <em>Elevation</em> colors the points by height.
+          <em>Intensity</em> shows how strongly each point reflected the
+          laser. <em>Classification</em> colors points by category, such as
+          ground, vegetation or buildings, if the file contains this
+          information. <em>Return number</em> shows which laser return a
+          point came from, which helps to tell vegetation from solid
+          surfaces.
+        </li>
+
+        <li>
+          <strong>Point size:</strong>
+          Makes the points larger or smaller. Only applies in depth-sized
+          mode.
+        </li>
+
+        <li>
+          <strong>Opacity:</strong>
+          Makes the points more or less transparent, for example to see
+          one scan through another.
+        </li>
+
+        <li>
+          <strong>Point budget:</strong>
+          The maximum number of points the viewer loads at the same time.
+          A higher budget shows more detail but needs a faster computer.
+          Lower it if the viewer becomes slow.
+        </li>
+
+        <li>
+          <strong>Bounds:</strong>
+          Shows the extent of the selected scan in X, Y and Z coordinates.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Sections</h3>
+
+      <p>
+        A section cuts a thin slice out of the selected scan and hides
+        everything else.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Section type:</strong>
+          <em>Horizontal section</em> cuts at a certain height, like a
+          floor plan. <em>Vertical section</em> cuts upright through the
+          scan, like a section drawing.
+        </li>
+
+        <li>
+          <strong>Direction:</strong>
+          Only for vertical sections. Rotates the cutting line around the
+          vertical axis, from 0° to 179°.
+        </li>
+
+        <li>
+          <strong>Position:</strong>
+          Moves the slice through the scan.
+        </li>
+
+        <li>
+          <strong>Thickness:</strong>
+          Sets how thick the slice is. A thin slice gives a sharp line,
+          a thicker slice shows more context.
+        </li>
+
+        <li>
+          <strong>Apply / Clear:</strong>
+          Apply creates the section. Once it is applied, changes to
+          direction, position and thickness update it directly.
+          Clear removes the section and shows the full scan again.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>PNG export</h3>
+
+      <p>
+        Export PNG at the top right saves the current view as an image.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Resolution (1x to 5x):</strong>
+          The image is rendered at a multiple of the current viewer size.
+          1x matches what you see on screen, 5x is five times wider and
+          higher, for printing or large posters. Higher resolutions take
+          a few seconds to render.
+        </li>
+
+        <li>
+          <strong>Transparent background:</strong>
+          The background is left out, so the points can be placed directly
+          on plans, collages or layouts.
+        </li>
+
+        <li>
+          <strong>Sections:</strong>
+          When a section is active, the image is cropped to the visible
+          points of the slice.
+        </li>
+
+        <li>
+          <strong>File name:</strong>
+          The file is named after the selected scan, the resolution and
+          the image size, for example scan-name_3x_4800x2400.png.
+        </li>
+
+        <li>
+          <strong>Tip:</strong>
+          For plan and section drawings, combine a section with the
+          orthographic view and single-pixel or depth-sized points.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Impressum</h3>
+
+      <p>
+        © ETH Zürich, developed at Professur Voser, Institute for Landscape
+        and Urban Studies, ETH Zürich.
+      </p>
+
+      <p>
+        Contact information:<br>
+        <strong>Professur Voser</strong><br>
+        c/o Dennis Häusler<br>
+        Institute for Landscape and Urban Studies<br>
+        ETH Zürich, Switzerland<br>
+        haeusler@arch.ethz.ch
+      </p>
+    </section>
+  `
+};
